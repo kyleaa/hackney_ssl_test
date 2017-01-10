@@ -4,5 +4,5 @@ RUN wget http://www.erlang.org/download/otp_src_19.2.tar.gz
 RUN tar -zxf otp_src_19.2.tar.gz && cd otp_src_19.2
 WORKDIR /otp_src_19.2
 ENV ERL_TOP /otp_src_19.2
-RUN  ./configure && make && make install
+RUN  CFLAGS="-DOPENSSL_NO_EC=1" ./configure && make && make install
 ADD hackney_ssl_test* /
